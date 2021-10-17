@@ -75,5 +75,4 @@ void free_line(struct train_stop* line)
         if(line->previous_stop) line->previous_stop->next_stop = NULL;
         free(line);
     }
-
 }
