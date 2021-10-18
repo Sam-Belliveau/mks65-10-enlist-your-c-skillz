@@ -19,6 +19,7 @@ void print_line(struct train_stop*);
 
 struct train_stop* insert_stop(struct train_stop*, struct train_stop*);
 
+void free_stop(struct train_stop*);
 void free_line(struct train_stop*);
 
 #endif

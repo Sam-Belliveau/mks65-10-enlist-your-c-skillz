@@ -13,7 +13,7 @@ OBJS=$(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
 
 # Compiler / Compiler Settings
 LINKS=-lm
-FLAGS=-O2
+FLAGS=-O2 -D DEBUG_TRAINS
 COMPILER=gcc $(FLAGS)
 
 # Command to create directory

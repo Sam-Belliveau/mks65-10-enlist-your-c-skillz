@@ -60,19 +60,27 @@ struct train_stop* insert_stop(struct train_stop* line, struct train_stop* stop)
     return stop;
 }
 
+void free_stop(struct train_stop* stop)
+{
+    if(stop)
+    {
+        #ifdef DEBUG_TRAINS
+        printf("[DEBUG] FREED STOP {");
+        print_stop(stop);
+        printf("}\n");
+        #endif
+
+        if(stop->previous_stop) stop->previous_stop->next_stop = stop->next_stop;
+        if(stop->next_stop) stop->next_stop->previous_stop = stop->previous_stop;
+        free(stop);
+    }
+}
+
 void free_line(struct train_stop* line)
 {
     if(line)
     {
         free_line(line->next_stop);
-
-        #ifdef DEBUG_TRAINS
-        printf("[DEBUG] FREED STOP {");
-        print_stop(line);
-        printf("}\n");
-        #endif
-
-        if(line->previous_stop) line->previous_stop->next_stop = NULL;
-        free(line);
+        free_stop(line);
     }
 }
