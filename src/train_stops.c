@@ -56,6 +56,7 @@ void print_line(struct train_stop* stop)
 struct train_stop* insert_stop(struct train_stop* line, struct train_stop* stop)
 {
     stop->next_stop = line;
+    stop->previous_stop = line->previous_stop;
     line->previous_stop = stop;
     return stop;
 }
